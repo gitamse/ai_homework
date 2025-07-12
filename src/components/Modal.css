@@ -1,0 +1,48 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    visibility: hidden;
+    opacity: 0; /* Начальная прозрачность */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  
+  .modal.modalOpen {
+    visibility: visible; /* Когда окно открыто, делаем его видимым */
+    opacity: 1; /* Полностью видимое */
+
+  }
+  
+  .modalContent {
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 700px;
+    width: 85%;
+    transform: scale(0.9); /* Начальное состояние немного уменьшено */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .modal.modalOpen .aodalContent {
+    transform: scale(1); /* При открытии увеличиваем до нормального размера */
+    opacity: 1; /* Полностью видимое содержимое */
+  }
+  .modalClose {
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    opacity: 0.7;
+  }
+  .modalClose:hover {
+    opacity: 1;
+  }

@@ -1,0 +1,28 @@
+    .uploadIcon {
+    cursor: pointer;
+  }
+  .uploadIcon:hover {
+    opacity: 0.5;
+  }
+  .fileUploadLoadingGif {
+    width: 64px;
+    height: 64px;
+  }
+  .modalUploadFile {
+    width: 50%;
+    max-width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: rgb(96, 114, 255);
+    border: 2px solid white;
+    outline: 4px solid rgb(96, 114, 255);
+    cursor: pointer;
+    color: white;
+    gap: 10px;
+  }

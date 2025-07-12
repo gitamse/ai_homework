@@ -1,0 +1,105 @@
+     .timer {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .startRecordingButton {
+    cursor: pointer;
+    background-size: cover;
+    border: none;
+    width: 64px;
+    height: 64px;
+    background: url('../data/mic-svgrepo-com.svg');
+  }
+  .startRecordingButton:hover {
+    opacity: 0.5;
+  }
+  .modalStartButton {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: rgb(75, 75, 75);
+    margin: 10px;
+    background-color: rgb(0, 197, 46);
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    border: 2px rgb(255, 255, 255) solid;
+    outline: 4px solid rgb(0, 197, 46);
+      }
+   .modalStartButton:hover {
+    opacity: 0.7;
+  }
+  .invisibleButtonContainer {
+
+    height: 0;
+    visibility: hidden;
+  }
+
+  .modalStopButton {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: rgb(75, 75, 75);
+    margin: 10px;
+    background-color: rgb(244, 0, 0);
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    border: 2px rgb(255, 255, 255) solid;
+    outline: 4px solid rgb(244, 0, 0);
+  }
+  .modalStopButton:hover {
+    opacity: 0.7;
+  }
+
+  .modalUpload:hover {
+    opacity: 0.7;
+  }
+  .modalSendVoice {
+    border: 1px solid gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 85%;
+    border-radius: 15px;
+    margin: 20px;
+    padding: 10px;
+    gap: 8px;
+    background-color: rgb(96, 114, 255);
+    border: 2px solid white;
+    outline: 4px solid rgb(96, 114, 255);
+    cursor: pointer;
+    color: white;
+  }
+  .modalSendVoice:hover {
+    opacity: 0.7;
+  }
+  .audioLoadingGif {
+    width: 64px;
+    height: 64px;
+    margin: 20px;
+  }
+  .recordingModal {
+    background-color: rgb(255, 255, 255);
+    max-width: fit-content;
+    }
+  .buttonContainer {
+    color: rgb(54, 54, 54);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid rgb(232, 232, 232);
+    border-radius: 15px;
+    margin: 15px;
+    padding: 8px;
+    }

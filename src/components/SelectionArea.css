@@ -1,0 +1,35 @@
+.selection-area {
+  position: absolute;
+  border: 2px solid #fff;
+  box-sizing: border-box;
+  z-index: 10;
+}
+
+.overlay {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.overlay-top {
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.overlay-left {
+  left: 0;
+}
+
+.overlay-right {
+  right: 0;
+}
+
+.overlay-bottom {
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+

@@ -1,0 +1,80 @@
+.appWrapper {
+    text-align: center;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+  }
+  .appWrapper h3 {
+    color: white;
+    margin-bottom: 25px;
+    font-size: 18px;
+    margin-left: 25px;
+    margin-right: 25px;
+  }
+ 
+  .authModalContent input {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    width: 75%;
+    border: 1px solid gray;
+    border-radius: 12px;
+  }
+  .authModalContent h2 {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    color: rgb(88, 88, 88);
+  }
+  .authButtons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    margin-top: 10px;
+  }
+  .authButtons button:hover {
+    opacity: 0.5;
+  }
+  
+  .authButtons button {
+    border: 1px solid white;
+    border-radius: 15px;
+    padding: 12px;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+  }
+  
+  .registerButton {
+    background-color:rgba(255, 255, 255, 0.3);
+      }
+  
+  .loginButton {
+    background-color: transparent;
+  }
+  .signOutButton {
+    background-color:rgba(255, 255, 255, 0.3);
+  }
+  .userLoginEmail {
+    font-weight: 500;
+    color: rgb(230, 230, 230);
+  }
+  .coinsContainer {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 30px;
+    padding: 3px;
+    padding-left: 5px;
+    padding-right: 10px;
+    margin-top: 10px;
+    border-radius: 15px;
+    background-color: white;
+    gap: 5px;
+    font-weight: 500;
+    font-size: 20px;
+    color: grey;
+  }

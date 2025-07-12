@@ -1,0 +1,302 @@
+.CameraModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+
+}
+
+.CameraModal.open {
+  visibility: visible;
+  opacity: 1;
+}
+
+.CameraModalContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  height: 100%;
+  background-color: black;
+
+
+}
+
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.controls {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.controls button {
+  margin: 0 auto;
+  opacity: 0.9;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 64px;
+  height: 64px;
+  justify-content: center;
+}
+
+.controls button:hover {
+  filter: invert(1);
+}
+
+.cameraButton {
+  cursor: pointer;
+  background-size: cover;
+  border: none;
+  width: 64px;
+  height: 64px;
+  background: url('../data/camera-svgrepo-com.svg');
+}
+
+.cameraButton:hover {
+  opacity: 0.5;
+}
+
+.flashlightButton.flashlight-on {
+  background: url('../data/flash-on.svg') no-repeat;
+}
+
+.flashlightButton.flashlight-off {
+  background: url('../data/flash-off.svg') no-repeat;
+}
+
+.captureButton {
+  background: url('../data/camera-modal.svg');
+}
+.selectAreaButton {
+  background: url('../data/crop-minimalistic.svg') no-repeat;
+}
+
+.cancelButton {
+  position: absolute;
+  cursor: pointer;
+  opacity: 0.7;
+  height: 40px;
+  width: 40px;
+  border: none;
+  top: 10px;
+  right: 10px;
+  background: url('../data/close-circle-svgrepo-com.svg') no-repeat;
+}
+.cancelButton:hover {
+  filter: invert(1);
+}
+/* .predefinedAreaButtons {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+}
+.predefined-areas {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.predefined-areas button {
+  padding: 5px 10px;
+  border: 1px solid #fff;
+  background-color: transparent;
+  color: #fff;
+  cursor: pointer;
+} */
+.predefinedAreaButtons {
+  position: absolute;
+  display: flex;
+  justify-content: end;
+  flex-direction: row; /* Столбик от кнопки вверх */
+  bottom: 15%; /* Отступ от кнопки selectAreaButton */
+  left: 50%; /* Центровка относительно родителя */
+  transform: translateX(-50%); /* Корректируем центровку */
+  opacity: 0; /* Скрываем по умолчанию */
+  pointer-events: none; /* Отключаем взаимодействие */
+  transition: all 0.5s ease; /* Анимация появления */
+}
+
+.predefinedAreaButtons.visible {
+  opacity: 1;
+  pointer-events: auto; 
+  transform: translateX(-50%) translateY(-10px);
+}
+
+.predefinedAreas {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.predefinedAreas button {
+  position: relative;
+  width: 48px;
+  height: 64px;
+  border: 1px solid white;
+  border-radius: 8px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.predefinedAreas button:hover {
+  opacity: 0.5;
+}
+.customFrames {
+  position: relative;
+  margin: auto;
+  width: 60%;
+  border: 2px solid white;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 4px;
+}
+
+.loadingGif {
+  width: 64px;
+  height: 64px;
+}
+
+
+.video-wrapper {
+  position: relative;
+  opacity: 0.8;
+  width: 100%;
+  height: 100%;
+}
+
+.focus-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Левый верхний угол */
+.focus-frame::before {
+  content: '';
+  position: absolute;
+  top: 60px;
+  left: 40px;
+  width: 40px;
+  height: 0;
+  border-top: 2px solid #ffffff; /* Верхняя горизонтальная линия */
+}
+
+.focus-frame::after {
+  content: '';
+  position: absolute;
+  top: 60px;
+  left: 40px;
+  width: 0;
+  height: 40px;
+  border-left: 2px solid #ffffff; /* Левая вертикальная линия */
+}
+
+/* Правый верхний угол */
+.focus-frame-top-right::before {
+  content: '';
+  position: absolute;
+  top: 60px;
+  right: 40px;
+  width: 40px;
+  height: 0;
+  border-top: 2px solid #ffffff; /* Верхняя горизонтальная линия справа */
+}
+
+.focus-frame-top-right::after {
+  content: '';
+  position: absolute;
+  top: 60px;
+  right: 40px;
+  width: 0;
+  height: 40px;
+  border-right: 2px solid #ffffff; /* Правая вертикальная линия сверху */
+}
+
+/* Левый нижний угол */
+.focus-frame-bottom-left::before {
+  content: '';
+  position: absolute;
+  bottom: 100px;
+  left: 40px;
+  width: 40px;
+  height: 0;
+  border-bottom: 2px solid #ffffff; /* Нижняя горизонтальная линия слева */
+}
+
+.focus-frame-bottom-left::after {
+  content: '';
+  position: absolute;
+  bottom: 100px;
+  left: 40px;
+  width: 0;
+  height: 40px;
+  border-left: 2px solid #ffffff; /* Левая вертикальная линия снизу */
+}
+
+/* Правый нижний угол */
+.focus-frame-bottom-right::before {
+  content: '';
+  position: absolute;
+  bottom: 100px;
+  right: 40px;
+  width: 40px;
+  height: 0;
+  border-bottom: 2px solid #ffffff; /* Нижняя горизонтальная линия справа */
+}
+
+.focus-frame-bottom-right::after {
+  content: '';
+  position: absolute;
+  bottom: 100px;
+  right: 40px;
+  width: 0;
+  height: 40px;
+  border-right: 2px solid #ffffff; /* Правая вертикальная линия снизу */
+}
+
+/* Линейка слева */
+.left-ruler {
+  position: absolute;
+  left: 40px;
+  top: 120px;
+  bottom: 180px;
+
+  border-left: 2px solid #ffffff;
+}
+
+.tick {
+  position: absolute;
+  width: 15px;
+  height: 2px;
+  background-color: #ffffff;
+}
+
+.short {
+  left: 0;
+}
+
+.long {
+  left: 0;
+  width: 40px;
+}

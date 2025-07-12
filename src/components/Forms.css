@@ -1,0 +1,30 @@
+.loginModalButtons {
+    width: 80%;
+    display: flex;
+    margin: auto;
+    justify-content:space-between;
+    gap: 10px;
+}
+.loginModalButtons button {
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 15px;
+    margin-top: 15px;
+
+}
+.loginModalButtons button:hover{
+    opacity: 0.7;
+}
+.submitModalButton {
+    background-color: rgb(96, 114, 255);
+    color: white;
+    border: none;
+}
+.restorePasswordButton {
+    background-color: white;
+    border: 1px solid rgb(96, 114, 255);
+    color: rgb(66, 66, 66);
+}
+.authError {
+    color: red;
+}

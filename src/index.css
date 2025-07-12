@@ -1,0 +1,17 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  color: white;
+  margin-bottom: 50px;
+}
+
+body {
+  font-family:'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    /* background: linear-gradient(to bottom right, rgb(0, 0, 125), rgb(202, 55, 80)); */
+    background-color: rgb(114, 116, 159);
+}
+

@@ -1,0 +1,44 @@
+.inputForm {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+.inputForm input {
+  padding-left: 30px;
+}
+.inputField {
+
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  padding: 10px;
+  width: 70%;
+  border-radius: 20px;
+  margin-left: 15px;
+  border: none;
+  /* max-height: 20px; */
+}
+.appWrapper {
+  margin: 10px;
+  min-height: 100vh;
+  height:auto;
+  max-width: 800px;
+  padding: 10px;
+  /* background: linear-gradient(to bottom right, rgb(0, 0, 125), rgb(202, 55, 80)); */
+  border: solid white 1px;
+  border-radius: 15px;
+}
+.requestOptions {
+  display: flex;
+  justify-content: center;
+
+}
+.requestOption {
+  margin: auto;
+}
+/* .responseField {
+  margin: auto;
+  width: 80%;
+  background-color: white;
+  border-radius: 20px;
+} */

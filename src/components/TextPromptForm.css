@@ -1,0 +1,11 @@
+.sendButton {
+    margin-left: 15px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: url('../data/send-alt-1-svgrepo-com.svg') ;
+}
+.sendButton:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}

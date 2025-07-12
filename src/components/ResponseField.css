@@ -1,0 +1,31 @@
+.responseField {
+  min-height: 100px;
+  border-radius: 15px;
+  margin: 20px;
+  padding: 20px;
+  background-color: rgb(255, 255, 255);
+}
+.response {
+  background-color: rgb(255, 239, 219);
+  padding: 15px;
+  border-radius: 15px;
+  margin-top: 25px;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+.clearButton {
+  cursor: pointer;
+  border: none;
+  width: 30px;
+  height: 30px;
+  background: url('../data/trash-bin-minimalistic-svgrepo-com.svg');
+
+ }
+.clearButton:hover {
+  opacity: 0.5;
+}
+.clearButtonContainer {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content:space-between;
+}

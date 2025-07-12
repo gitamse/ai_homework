@@ -1,0 +1,12 @@
+.downloadPdfButton {
+    display: flex;
+    justify-content: start;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border: none;
+    background: url('../data/pdf.svg') no-repeat;
+}
+.downloadPdfButton:hover {
+    opacity: 0.5;
+}
