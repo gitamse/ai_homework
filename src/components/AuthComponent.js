@@ -11,36 +11,55 @@ import MainForm from './MainForm'
 import Modal from './Modal'
 import Coins from './Coins'
 import { LoginForm, RegisterForm, ResetForm } from './Forms'
-import { fetchRemainingRequests } from '../utils/fetchRemainingRequests' // Импортируем функцию
+import { fetchRemainingRequests } from '../utils/fetchRemainingRequests'
 import './AuthComponent.css'
 import coin from '../data/coin.svg'
 
 const AuthComponent = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [userEmail, setUserEmail] = useState('')
-  const [modalType, setModalType] = useState(null) // 'login' | 'register' | 'reset'
+  const [modalType, setModalType] = useState(null)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [authError, setAuthError] = useState('')
   const [coins, setCoins] = useState(0)
 
   // Обновление количества монет
-  const updateCoins = async (email) => {
-    const remainingCoins = await fetchRemainingRequests(email)
-    setCoins(remainingCoins)
+  const updateCoins = async () => {
+    try {
+      const remainingCoins = await fetchRemainingRequests(userEmail, isLoggedIn)
+      setCoins(remainingCoins)
+    } catch (error) {
+      console.error('Error updating coins:', error)
+      setCoins(0)
+    }
   }
+
+  // Обновляем монеты при изменении состояния пользователя
+  useEffect(() => {
+    updateCoins()
+  }, [isLoggedIn, userEmail]) // Зависимости: при изменении isLoggedIn или userEmail
 
   // Обработчики событий
   const handleEmailChange = (e) => setEmail(e.target.value)
   const handlePasswordChange = (e) => setPassword(e.target.value)
 
-  const handleRegister = () => {
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        setAuthError('Registration was successful!')
-        setModalType(null)
-      })
-      .catch((error) => setAuthError(`Registration error: ${error.message}`))
+  const handleRegister = async () => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      )
+      setAuthError('Registration was successful!')
+      setModalType(null)
+      // Обновляем состояние после успешной регистрации
+      setIsLoggedIn(true)
+      setUserEmail(userCredential.user.email)
+      await updateCoins()
+    } catch (error) {
+      setAuthError(`Registration error: ${error.message}`)
+    }
   }
 
   const handleLogin = async () => {
@@ -50,10 +69,12 @@ const AuthComponent = () => {
         email,
         password
       )
+      setAuthError('')
+      setModalType(null)
+      // Обновляем состояние
       setIsLoggedIn(true)
       setUserEmail(userCredential.user.email)
-      await updateCoins(userCredential.user.email) // Обновляем монеты после логина
-      setModalType(null)
+      await updateCoins()
     } catch (error) {
       setAuthError(`Login error: ${error.message}`)
     }
@@ -69,10 +90,14 @@ const AuthComponent = () => {
   }
 
   const handleLogout = async () => {
-    await signOut(auth)
-    setIsLoggedIn(false)
-    setUserEmail('')
-    await updateCoins('') // Обновляем монеты для разлогиненного состояния
+    try {
+      await signOut(auth)
+      setIsLoggedIn(false)
+      setUserEmail('')
+      await updateCoins()
+    } catch (error) {
+      console.error('Logout error:', error)
+    }
   }
 
   const closeModal = () => {
@@ -82,17 +107,15 @@ const AuthComponent = () => {
     setAuthError('')
   }
 
-  // Обновляем монеты при изменении состояния пользователя
+  // Слушаем изменения состояния аутентификации
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         setIsLoggedIn(true)
         setUserEmail(user.email)
-        await updateCoins(user.email)
       } else {
         setIsLoggedIn(false)
         setUserEmail('')
-        await updateCoins('')
       }
     })
     return () => unsubscribe()
@@ -142,6 +165,7 @@ const AuthComponent = () => {
         coins={coins}
         setCoins={setCoins}
         fetchRemainingRequests={updateCoins}
+        isLoggedIn={isLoggedIn}
       />
       <div className='authModalContent'>
         <Modal isOpen={!!modalType} closeModal={closeModal}>

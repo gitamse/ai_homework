@@ -1,17 +1,24 @@
-export const fetchRemainingRequests = (email) => {
+export const fetchRemainingRequests = (email, isLoggedIn) => {
+  const url = new URL('http://173.249.56.139:8000/api/v1/chats/get_remaining')
+
+  if (isLoggedIn && email) {
+    url.searchParams.append('email', email)
+  }
+
   console.log(email + ' in fetch')
-  return fetch(`https://aimentory.com:5000/get_remaining?email=${email}`)
+
+  return fetch(url.toString())
     .then((response) => response.json())
     .then((data) => {
       if (data.remaining !== undefined) {
-        return data.remaining // Возвращаем количество монет
+        return data.remaining
       } else {
         console.error('Error:', data.error)
-        return 0 // Если произошла ошибка, возвращаем 0
+        return 0
       }
     })
     .catch((error) => {
       console.error('Error fetching remaining requests:', error)
-      return 0 // Если произошла ошибка, возвращаем 0
+      return 0
     })
 }

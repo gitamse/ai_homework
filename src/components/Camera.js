@@ -145,12 +145,14 @@ const Camera = ({ updateResponse, email, fetchRemainingRequests }) => {
     const blob = new Blob([ab], { type: mimeString })
     const formData = new FormData()
     formData.append('image', blob, 'photo.jpeg')
-    formData.append('email', email)
+    if (email != '') {
+      formData.append('email', email)
+    }
 
     // const imagePreviewUrl = URL.createObjectURL(blob)
     // setImagePreview(imagePreviewUrl)
 
-    fetch('https://aimentory.com:5000/upload_image', {
+    fetch('http://173.249.56.139:8000/api/v1/chats/upload_image', {
       method: 'POST',
       body: formData,
     })

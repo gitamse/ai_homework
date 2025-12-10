@@ -112,7 +112,7 @@ const AudioRecorder = ({
     const formData = new FormData()
     formData.append('audio', audioBlob, 'audio.wav')
 
-    fetch('https://aimentory.com:5000/transcribe', {
+    fetch('http://173.249.56.139:8000/api/v1/chats/transcribe', {
       method: 'POST',
       body: formData,
     })
@@ -135,7 +135,7 @@ const AudioRecorder = ({
       })
   }
   const sendTranscriptionToChat = (transcription) => {
-    fetch('https://aimentory.com:5000/chat', {
+    fetch('http://173.249.56.139:8000/api/v1/chats/chat', {
       method: 'POST',
       body: JSON.stringify({ prompt: transcription, email: email }),
       headers: { 'Content-Type': 'application/json' },

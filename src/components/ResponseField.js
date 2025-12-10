@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import DownloadPdf from './DownloadPdf'
 import './ResponseField.css'
 
-const ResponseField = ({ setResponseText, responseText }) => {
+const ResponseField = ({ setResponseText, responseText, isLoading }) => {
   const [downloadPdfLink, setDownloadPdfLink] = useState('')
 
   useEffect(() => {
@@ -30,9 +30,15 @@ const ResponseField = ({ setResponseText, responseText }) => {
           </div>
         )}
       </div>
-      {responseText.map((res, index) => (
+      {isLoading && (
+        <div className='loadingIndicator'>
+          <p className='loading-text'>AI is thinking...</p>
+        </div>
+      )}
+      {[...responseText].reverse().map((res, index) => (
         <div className='response-container' key={index}>
           {/* Отображаем свойство prompt */}
+
           {res.prompt ? (
             <div className='response'>
               <strong>Your request:</strong> {res.prompt}

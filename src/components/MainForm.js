@@ -6,8 +6,15 @@ import TextPromptForm from './TextPromptForm'
 import ResponseField from './ResponseField'
 import './MainForm.css'
 
-const MainForm = ({ email, coins, setCoins, fetchRemainingRequests }) => {
+const MainForm = ({
+  email,
+  coins,
+  setCoins,
+  fetchRemainingRequests,
+  isLoggedIn,
+}) => {
   const [responseText, setResponseText] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
 
   // Функция для обновления общего поля ответа
   const updateResponse = (newResponse) => {
@@ -21,6 +28,8 @@ const MainForm = ({ email, coins, setCoins, fetchRemainingRequests }) => {
         coins={coins}
         setCoins={setCoins}
         fetchRemainingRequests={fetchRemainingRequests}
+        isLoggedIn={isLoggedIn}
+        setIsLoading={setIsLoading}
       />
       <div className='requestOptions'>
         <div className='requestOption'>
@@ -53,6 +62,7 @@ const MainForm = ({ email, coins, setCoins, fetchRemainingRequests }) => {
         <ResponseField
           setResponseText={setResponseText}
           responseText={responseText}
+          isLoading={isLoading}
         ></ResponseField>
       </div>
     </div>

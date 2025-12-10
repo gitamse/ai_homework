@@ -7,6 +7,8 @@ const TextPromptForm = ({
   coins,
   setCoins,
   fetchRemainingRequests,
+  isLoggedIn,
+  setIsLoading,
 }) => {
   const [prompt, setPrompt] = useState('')
 
@@ -17,12 +19,13 @@ const TextPromptForm = ({
       if (prompt.trim() === '') {
         return
       }
+      setIsLoading(true)
 
-      fetch('https://aimentory.com:5000/chat', {
+      fetch('http://173.249.56.139:8000/api/v1/chats/chat', {
         method: 'POST',
         body: JSON.stringify({
           prompt: prompt,
-          email: email,
+          ...(isLoggedIn && { email: email }),
         }),
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
@@ -39,14 +42,12 @@ const TextPromptForm = ({
           }
           // setCoins(fullResponse.coins)
           updateResponse(fullResponse)
-          console.log(json)
-          console.log(email)
         })
         .catch((error) => {
           updateResponse({ response: `Error: ${error.message}` })
         })
         .finally(() => {
-          setTimeout(1000)
+          setIsLoading(false)
           fetchRemainingRequests(email)
         })
 

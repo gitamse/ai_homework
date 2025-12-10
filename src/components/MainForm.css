@@ -20,13 +20,13 @@
 }
 .appWrapper {
   margin: 10px;
-  min-height: 100vh;
+  height: 100vh;
   height:auto;
   max-width: 800px;
   padding: 10px;
   /* background: linear-gradient(to bottom right, rgb(0, 0, 125), rgb(202, 55, 80)); */
-  border: solid white 1px;
-  border-radius: 15px;
+  /* border: solid white 1px;
+  border-radius: 15px; */
 }
 .requestOptions {
   display: flex;
