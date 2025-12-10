@@ -2,7 +2,7 @@ import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyBNNF31r9zMP8kmnz32xZ3uj2_uXJlrsyA',
+  apiKey: 'API_KEY',
   authDomain: 'ai-homework-b595a.firebaseapp.com',
   projectId: 'ai-homework-b595a',
   storageBucket: 'ai-homework-b595a.appspot.com',
